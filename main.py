@@ -220,9 +220,10 @@ for t in train:
         allCirculations.append(p)
     trains.append(Train(no, category, attrList.get('Relacja:'), name, attrList.get('Kursuje:'), attrList.get('Info:'), attrList.get('Obowiązuje:'), locos, cars, attrList.get('Obiegi:')))
 #file.write ('Obiegi:\n')
+trains.sort(key=lambda x: x.number)
 for t in trains:
     trains_file.write(str(t))
-    trains_file.write('\n=======\n')
+    trains_file.write('\n=======\n\n')
 allCirculations = deleteDuplicates(allCirculations)
 allLocos = deleteDuplicates(allLocos)
 allCirculations.sort()
@@ -234,7 +235,7 @@ for c in allCirculations:
         if t.circulations.count(c) > 0:
             circul_file.write (str(t))
             circul_file.write('\n=======\n')
-    circul_file.write('----------------------------------\n')
+    circul_file.write('----------------------------------\n\n')
 #file.write ('Lokomotywy i EZT:')
 for l in allLocos:
     locos_file.write(l)
@@ -244,7 +245,7 @@ for l in allLocos:
             if  lo.name == l:
                 locos_file.write (str(t))
                 locos_file.write('\n=======\n')
-    locos_file.write('----------------------------------\n')
+    locos_file.write('----------------------------------\n\n')
 
 trains_file.close()
 locos_file.close()
